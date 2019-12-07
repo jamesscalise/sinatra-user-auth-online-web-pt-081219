@@ -20,6 +20,7 @@ class ApplicationController < Sinatra::Base
     @user = User.new(name: params["name"], email: params["email"], password: params["password"])
     @user.save
     session[:user_id] = @user.id
+    puts params
 
     redirect '/users/home'
   end
@@ -32,8 +33,10 @@ class ApplicationController < Sinatra::Base
 
   post '/sessions' do
     @user = User.find_by(email: params[:email], password: params[:password])
+    #binding.pry
     if @user
       session[:user_id] = @user.id
+      #binding.pry
       redirect '/users/home'
     end
     redirect '/sessions/login'
