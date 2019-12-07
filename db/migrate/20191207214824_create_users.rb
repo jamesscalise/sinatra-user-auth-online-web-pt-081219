@@ -1,7 +1,7 @@
 class CreateUsers < ActiveRecord::Migration
   def change
-    create_table :dogs do |t|
-      
+    create_table :user do |t|
+      t.string :name
     end
   end
 end
